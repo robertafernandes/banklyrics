@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="welcome">Welcome to Lyrics Bank!</string>
     <string name="opcao">Choice your option:</string>
-    <string name="bCadastroArtista">Cadastre uma novo astista</string>
+    <string name="bCadastroArtista">Cadastre um novo artista</string>
     <string name="bCadastroLetra">Cadastre uma nova letra</string>
     <string name="bListagem">Pesquise uma música</string>
     <string name="title_activity_artist_registry">New Singer</string> 
@@ -13,8 +13,9 @@
     <string name="title_activity_lyrics_list">New Lyric</string>
     <string name="hello_world">Hello world!</string>
     <string name="header">Insert a new lyric</string>
-    <string name="name">Song Title</string>
+    <string name="lyric_name">Song Title</string>
     <string name="letra">Song Lyrics</string>
+    <string name="artist_name">Singer Name</string>
     <string name="imagem">Image</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>

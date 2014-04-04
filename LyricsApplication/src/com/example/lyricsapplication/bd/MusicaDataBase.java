@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.lyricsapplication.entity.Artista;
 import com.example.lyricsapplication.entity.Musica;
 
 public class MusicaDataBase implements DataBase<Musica>{ 
@@ -127,7 +128,9 @@ public class MusicaDataBase implements DataBase<Musica>{
 		String name = c.getString(c.getColumnIndex(DbHelper.DATABASE_NAME_FIELD));
 		String letra = c.getString(c.getColumnIndex(DbHelper.DATABASE_LETRA_FIELD));
 		 
-		return new Musica(id, name, letra);  
+		//FIXME receber Artista
+		Artista artista = null;
+		return new Musica(id, name, letra, artista);  
 	}
 
 	@Override

@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp"
-            android:text="@string/name"
+            android:text="@string/lyric_name"
             android:textColor="#808080" />
 
         <EditText
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp"
-            android:text="@string/imagem"
+            android:text="@string/letra"
             android:textColor="#808080" />
 
         <EditText

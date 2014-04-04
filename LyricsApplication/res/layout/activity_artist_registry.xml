@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp"
-            android:text="@string/name"
+            android:text="@string/artist_name"
             android:textColor="#808080" />
 
         <EditText
@@ -58,18 +58,38 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp"
-            android:text="@string/letra"
+            android:text="@string/imagem"
             android:textColor="#808080" />
+        
+        <Button
+            android:id="@+id/bImage"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="5dp"
+            android:autoLink="web"
+            android:background="@drawable/botao_azul_seletor"
+            android:padding="5dp"
+            android:text="Obter Imagem"
+            android:textColor="#ffffff" />
+        
 
         <Gallery
             android:id="@+id/gallery1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"            
+            />
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imViewArtist"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"            
+            android:ems="10"
+            android:gravity="top"
             android:src="@drawable/botao_azul_seletor" />
         
     </LinearLayout>

@@ -11,13 +11,14 @@ import android.widget.Toast;
 
 import com.example.lyricsapplication.bd.DataBase;
 import com.example.lyricsapplication.bd.MusicaDataBase;
+import com.example.lyricsapplication.entity.Artista;
 import com.example.lyricsapplication.entity.Musica;
 
 public class LyricsRegistryActivity extends Activity implements OnClickListener {
 
 	private DataBase<Musica> database;
-	private Button save;
-	private Button cancel;
+	private Button bSave;
+	private Button bCancel;
 	private EditText edName;
 	private EditText edLyrics;
 
@@ -28,11 +29,11 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 
 		database = MusicaDataBase.getInstance(this);
 
-		save = (Button) findViewById(R.id.bSave);
-		save.setOnClickListener(this);
+		bSave = (Button) findViewById(R.id.bSave);
+		bSave.setOnClickListener(this);
 
-		cancel = (Button) findViewById(R.id.bCancel);
-		cancel.setOnClickListener(this);
+		bCancel = (Button) findViewById(R.id.bCancel);
+		bCancel.setOnClickListener(this);
 
 		edName = (EditText) findViewById(R.id.edName); 
 		edLyrics = (EditText) findViewById(R.id.edLyrics); 
@@ -40,14 +41,16 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 
 	@Override
 	public void onClick(View v) {
-		if (v == save){
+		if (v == bSave){
 			if ("".equals(edName.getText().toString()) || "".equals(edLyrics.getText().toString())) {
 				Toast.makeText(this, "Você precisa especificar um nome e valor!", Toast.LENGTH_SHORT).show(); 
 				
 			} else {
 				String name = edName.getText().toString().trim();
 				String letra = edLyrics.getText().toString().trim(); 
-				database.insert(new Musica(name, letra));  
+				//FIXME receber Artista
+				Artista artista = null;
+				database.insert(new Musica(name, letra, artista));  
 				Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show(); 
 				startNewIntent(); 
 			}
