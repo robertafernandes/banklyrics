@@ -28,14 +28,14 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 
 		database = MusicaDataBase.getInstance(this);
 
-		save = (Button) findViewById(R.id.button2);
+		save = (Button) findViewById(R.id.bSave);
 		save.setOnClickListener(this);
 
-		cancel = (Button) findViewById(R.id.button1);
+		cancel = (Button) findViewById(R.id.bCancel);
 		cancel.setOnClickListener(this);
 
-		edName = (EditText) findViewById(R.id.editText1); 
-		edLyrics = (EditText) findViewById(R.id.editText2); 
+		edName = (EditText) findViewById(R.id.edName); 
+		edLyrics = (EditText) findViewById(R.id.edLyrics); 
 	}
 
 	@Override

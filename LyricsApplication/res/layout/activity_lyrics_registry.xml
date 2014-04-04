@@ -45,7 +45,7 @@
             android:textColor="#808080" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/edName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -58,11 +58,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp"
-            android:text="@string/letra"
+            android:text="@string/imagem"
             android:textColor="#808080" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/edLyrics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -86,7 +86,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/bCancel"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
@@ -99,7 +99,7 @@
             android:textColor="#ffffff" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bSave"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"

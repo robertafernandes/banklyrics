@@ -45,7 +45,16 @@
             android:textColorHint="#ffffff" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/bRegisterArtist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick" 
+            android:background="@drawable/botao_entrada"
+            android:text="@string/bCadastro" />
+        
+        
+        <Button
+            android:id="@+id/bRegisterLyric"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:onClick="onClick" 
@@ -53,7 +62,7 @@
             android:text="@string/bCadastro" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bFindLyric"
             android:layout_marginTop="8dp" 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

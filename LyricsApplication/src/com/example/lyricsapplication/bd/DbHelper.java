@@ -8,13 +8,19 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	public static final String DBNAME = "dbMusicas";
 	
+	public static final String TBL_ARTISTA = "Artista"; 
+	
 	public static final String TBL_MUSICA = "Musica"; 
 	
 	public static final String DATABASE_ID_FIELD = "_id";
+	
+	public static final String DATABASE_ID_ARTISTA_FIELD = "idArtista";
 
 	public static final String DATABASE_NAME_FIELD = "nome";
  
 	public static final String DATABASE_LETRA_FIELD = "letra";
+	
+	public static final String DATABASE_IMAGEM_FIELD = "imagem";
 	
 	private static final int DBVERSION = 3;
 
@@ -24,8 +30,13 @@ public class DbHelper extends SQLiteOpenHelper {
  
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATE TABLE Musica ( _id INTEGER PRIMARY KEY AUTOINCREMENT, "
-				+ "nome TEXT NOT NULL, letra TEXT NOT NULL)");
+		db.execSQL("CREATE TABLE "+TBL_ARTISTA+" ( "+DATABASE_ID_FIELD+" INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ DATABASE_NAME_FIELD+ " TEXT NOT NULL, "+ DATABASE_IMAGEM_FIELD +" BLOB)");
+		
+		db.execSQL("CREATE TABLE "+TBL_MUSICA+" ( "+DATABASE_ID_FIELD+" INTEGER PRIMARY KEY AUTOINCREMENT, "				
+				+ DATABASE_NAME_FIELD+ " TEXT NOT NULL, "+ DATABASE_LETRA_FIELD +" TEXT NOT NULL, "
+				+ DATABASE_ID_ARTISTA_FIELD + " INTEGER, "
+				+ "FOREIGN KEY("+DATABASE_ID_ARTISTA_FIELD+") REFERENCES "+TBL_ARTISTA+"("+DATABASE_ID_FIELD+"))");		
 	}
 
 	@Override

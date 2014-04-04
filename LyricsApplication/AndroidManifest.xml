@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.lyricsapplication.ArtistRegistryActivity"
+            android:label="@string/title_activity_artist_registry" >
+        </activity>
+        <activity
             android:name="com.example.lyricsapplication.LyricsRegistryActivity"
             android:label="@string/title_activity_lyrics_registry" >
         </activity>

@@ -18,13 +18,19 @@ public class LyricsMainActivity extends Activity {
 		Intent it;
 
 		switch (view.getId()) {
-		case R.id.button1:
+		case R.id.bRegisterArtist:
+			it = new Intent(this, ArtistRegistryActivity.class);
+			it.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+			startActivity(it);
+			break;
+			
+		case R.id.bRegisterLyric:
 			it = new Intent(this, LyricsRegistryActivity.class);
 			it.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(it);
 			break;
 
-		case R.id.button2:
+		case R.id.bFindLyric:
 			it = new Intent(this, LyricsListActivity.class);
 			it.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(it);
