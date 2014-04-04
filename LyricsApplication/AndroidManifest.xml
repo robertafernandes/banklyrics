@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lyricsapplication"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar" >
+        <activity
+            android:name="com.example.lyricsapplication.LyricsMainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.lyricsapplication.LyricsRegistryActivity"
+            android:label="@string/title_activity_lyrics_registry" >
+        </activity>
+        <activity
+            android:name="com.example.lyricsapplication.LyricsListActivity"
+            android:label="@string/title_activity_lyrics_list" >
+        </activity>
+        <activity
+            android:name="com.example.lyricsapplication.EditLyricsActivity"
+            android:label="@string/title_activity_lyrics_registry" >
+        </activity>
+        <activity
+            android:name="com.example.lyricsapplication.ViewLyricsActivity"
+            android:label="@string/title_activity_view_lyrics" >
+        </activity>
+    </application>
+
+</manifest>

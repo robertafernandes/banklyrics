@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Banca de Letras</string> 
+    <string name="action_settings">Settings</string>
+    <string name="welcome">Bem-vindo ao Banca de Letras!</string>
+    <string name="opcao">Escolha a sua opção:</string>
+    <string name="bCadastro">Registre uma nova Música</string>
+    <string name="bListagem">Banca de Músicas</string>
+    <string name="title_activity_lyrics_registry">LyricsRegistryActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="header">Insira uma nova letra</string>
+    <string name="name">Título da Música</string>
+    <string name="letra">Letra da Música</string> 
+    <string name="cancel">Cancelar</string>
+    <string name="save">Salvar</string>
+
+</resources>
+ 
