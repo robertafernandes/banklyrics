@@ -25,7 +25,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp"
-            android:text="@string/header"
+            android:text="@string/artist_header"
             android:textColor="#ffffff" />
     </LinearLayout>
 
