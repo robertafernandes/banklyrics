@@ -25,7 +25,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp"
-            android:text="@string/headerList"
+            android:text="@string/lyric_Header_List"
             android:textColor="#ffffff" />
 
     </LinearLayout>
@@ -79,7 +79,7 @@
             android:background="@drawable/botao_azul_seletor"
             android:onClick="inserir"
             android:padding="5dp"
-            android:text="@string/bInsert"
+            android:text="@string/b_Lyric_Insert"
             android:textColor="#ffffff" />
 
     </LinearLayout>
