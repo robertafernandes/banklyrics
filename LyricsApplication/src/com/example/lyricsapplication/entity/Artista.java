@@ -17,7 +17,7 @@ public class Artista {
 		this.image = image;
 	} 
 
-	//teste
+	//teste 2
 	
 	public int getId() {
 		return id;
