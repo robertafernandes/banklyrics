@@ -60,7 +60,7 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 	}
 	
 	private void startNewIntent() {
-		Intent intent = new Intent(this, LyricsMainActivity.class); 
+		Intent intent = new Intent(this, LyricsListActivity.class); 
 		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
     	startActivity(intent);
 	}

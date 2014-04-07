@@ -71,7 +71,7 @@ public class ArtistsListActivity extends Activity {
 					intent.putExtra("id", (Integer) id);  
 					intent.putExtra("nome", (String) name.getText());
 					intent.putExtra("imagem", image);  
-					intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+					//intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			    	startActivity(intent);
 				}
 			});

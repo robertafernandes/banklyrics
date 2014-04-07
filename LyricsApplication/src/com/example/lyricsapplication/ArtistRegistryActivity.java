@@ -19,11 +19,12 @@ import android.widget.Toast;
 
 import com.example.lyricsapplication.bd.ArtistaDataBase;
 import com.example.lyricsapplication.bd.DataBase;
+import com.example.lyricsapplication.bd.IArtistaDataBase;
 import com.example.lyricsapplication.entity.Artista;
 
 public class ArtistRegistryActivity extends Activity implements OnClickListener {
 
-	private DataBase<Artista> database;
+	private IArtistaDataBase database;
 	private Button bImage;
 	private Button bCancel;
 	private Button bSave;
@@ -32,6 +33,8 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 	private ImageView imViewArtist;
 	
 	private String imageArtist;
+	
+	private int id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +55,14 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 		edName = (EditText) findViewById(R.id.edName);
 		 
 		imViewArtist = (ImageView) findViewById(R.id.imViewArtist);
- 
+		
+		id = getIntent().getIntExtra("id", 0); 
+		String nome = getIntent().getStringExtra("nome");
+		imageArtist = getIntent().getStringExtra("imagem");
+		
+		edName.setText(nome);
+        Bitmap bmp = BitmapFactory.decodeFile(imageArtist);
+        imViewArtist.setImageBitmap(bmp); 
 	}
 	
 	private int RESULT_LOAD_IMAGE = 7;
@@ -67,8 +77,13 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 				Toast.makeText(this, "Você precisa especificar um nome!", Toast.LENGTH_SHORT).show();
 			} else {
 				String name = edName.getText().toString().trim();
-				database.insert(new Artista(name, imageArtist));  
-				Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show(); 
+				if (id == 0) {
+					database.insert(new Artista(name, imageArtist));  
+					Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+				} else {
+					database.update(id, name, imageArtist);
+					Toast.makeText(this, "Alterado com sucesso!", Toast.LENGTH_SHORT).show();
+				}
 				startNewIntent(); 
 			}
 		} else {
@@ -77,11 +92,10 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 	}
 	
 	private void startNewIntent() {
-		Intent intent = new Intent(this, LyricsMainActivity.class); 
+		Intent intent = new Intent(this, ArtistsListActivity.class); 
 		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
     	startActivity(intent);
 	}
-
 	
 	@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -93,17 +107,8 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
             cursor.moveToFirst();
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             imageArtist = cursor.getString(columnIndex);
-            //byte picture[] = cursor.getString(columnIndex);
             cursor.close();
-            Bitmap bmp = BitmapFactory.decodeFile(imageArtist);                      
-            
-            //ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            //bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            //picture = stream.toByteArray();
-                          
-            //FIXME desnecessario apenas para teste
-            //Bitmap theImage = BitmapFactory.decodeByteArray(picture, 0, picture.length); 
-            
+            Bitmap bmp = BitmapFactory.decodeFile(imageArtist);
             imViewArtist.setImageBitmap(bmp);
         }
     }		
