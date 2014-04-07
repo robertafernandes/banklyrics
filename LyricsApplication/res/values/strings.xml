@@ -16,9 +16,13 @@
     <string name="hello_world">Hello world!</string>
     <string name="lyrics_header">Insert a new lyric</string>
     <string name="artist_header">Insert a new Singer</string>
+<<<<<<< HEAD
     <string name="lyric_name_focus">Insira o nome da música</string>
     <string name="artist_name_focus">Selecione o artista</string> 
     <string name="lyric_focus">Insira a letra da música</string>
+=======
+    <string name="lyric_name">Song Title</string>
+>>>>>>> branch 'master' of https://github.com/robertafernandes/banklyrics.git
     <string name="letra">Song Lyrics</string>
     <string name="artist_name">Singer Name</string>
     <string name="imagem">Image</string>
