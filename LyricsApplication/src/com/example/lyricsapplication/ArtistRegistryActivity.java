@@ -31,7 +31,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 	
 	private ImageView imViewArtist;
 	
-	private byte picture[];
+	private String picture;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,14 +97,14 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
             cursor.close();
             Bitmap bmp = BitmapFactory.decodeFile(picturePath);                      
             
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            picture = stream.toByteArray();
+            //ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            //bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            //picture = stream.toByteArray();
                           
             //FIXME desnecessario apenas para teste
-            Bitmap theImage = BitmapFactory.decodeByteArray(picture, 0, picture.length); 
+            //Bitmap theImage = BitmapFactory.decodeByteArray(picture, 0, picture.length); 
             
-            imViewArtist.setImageBitmap(theImage);
+            imViewArtist.setImageBitmap(bmp);
         }
     }		
 

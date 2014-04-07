@@ -39,13 +39,14 @@ public class ArtistsListActivity extends Activity {
 			LinearLayout child = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.item_musica, null); 
 			
 			final int id = artista.getId();
-			final byte[] image = artista.getImage();
+			final String image = artista.getImage();
 			final TextView name = (TextView) child.findViewById(R.id.textName); 
 			name.setText(artista.getName()); 
 			
 			ImageView visualizar = (ImageView) child.findViewById(R.id.imageView1);
-			Bitmap bm = BitmapFactory.decodeByteArray(image, 0, image.length);
-			visualizar.setImageBitmap(bm);
+			Bitmap bmp = BitmapFactory.decodeFile(artista.getImage());
+			//Bitmap bm = BitmapFactory.decodeByteArray(image, 0, image.length);
+			visualizar.setImageBitmap(bmp);
 			/*
 			visualizar.setOnClickListener(new OnClickListener() {
 				@Override 
