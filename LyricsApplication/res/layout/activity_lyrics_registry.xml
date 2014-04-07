@@ -14,15 +14,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="horizontal" 
+        android:background="#3975CB">
+
+        <ImageView
+            android:id="@+id/bRegisterLyric"
+             android:paddingLeft="5dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/novamusica" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:background="#5498D2"
+            android:background="#3975CB"
             android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="3dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp"
             android:text="@string/lyrics_header"
@@ -90,33 +99,26 @@
         android:layout_height="40dp"
         android:layout_marginBottom="0dp"
         android:layout_marginTop="10dp"
-        android:background="#5498D2"
-        android:gravity="center_vertical|center_horizontal"
+        android:background="#3975CB"
+        android:gravity="center_vertical|right"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/bCancel"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:layout_marginRight="5dp"
+             android:layout_width="25dp" 
+            android:layout_height="25dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="15dp"
             android:autoLink="web"
-            android:background="@drawable/botao_azul_seletor"
-            android:gravity="center_vertical|center_horizontal|center"
-            android:padding="5dp"
-            android:text="@string/cancel"
-            android:textColor="#ffffff" />
+            android:background="@drawable/cancelar" /> 
 
         <Button
             android:id="@+id/bSave"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="15dp"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="5dp"
-            android:autoLink="web"
-            android:background="@drawable/botao_azul_seletor"
-            android:padding="5dp"
-            android:text="@string/save"
+            android:background="@drawable/salvar"
             android:textColor="#ffffff" />
 
     </LinearLayout>

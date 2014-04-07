@@ -36,7 +36,7 @@ public class LyricsListActivity extends Activity {
 		for (Musica musica : musicas) {
 			LinearLayout child = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.item_musica, null); 
 			
-			final int id = musica.getId();
+			final int id = musica.getId(); 
 			final String letra = musica.getLyrics();
 			final TextView name = (TextView) child.findViewById(R.id.textView1); 
 			name.setText(musica.getName()); 
