@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.lyricsapplication.entity.Artista;
 import com.example.lyricsapplication.entity.Musica;
 
-public class MusicaDataBase implements DataBase<Musica>{ 
+public class MusicaDataBase implements IMusicaDataBase{ 
 	
 	private static final MusicaDataBase instance = new MusicaDataBase();
 	
@@ -27,7 +27,7 @@ public class MusicaDataBase implements DataBase<Musica>{
 	 * @param ctx Context
 	 * @return The UserDataBase instance.
 	 */
-	public static DataBase<Musica> getInstance(Context ctx) {
+	public static IMusicaDataBase getInstance(Context ctx) {
 		if (instance.db == null || !instance.db.isOpen()) {
 			instance.db = new DbHelper(ctx).getWritableDatabase();
 		}
@@ -127,14 +127,14 @@ public class MusicaDataBase implements DataBase<Musica>{
 		int id = c.getInt(c.getColumnIndex(DbHelper.DATABASE_ID_FIELD));
 		String name = c.getString(c.getColumnIndex(DbHelper.DATABASE_NAME_FIELD));
 		String letra = c.getString(c.getColumnIndex(DbHelper.DATABASE_LETRA_FIELD));
-		 
+		
 		//FIXME receber Artista
 		Artista artista = null;
 		return new Musica(id, name, letra, artista);  
 	}
 
 	@Override
-	public void update(int id, String nome, String letra) { 
+	public void update(int id, String nome, String letra, Artista artista) { 
 		
 		db.beginTransaction();
 		try {

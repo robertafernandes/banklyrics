@@ -10,13 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.lyricsapplication.bd.DataBase;
+import com.example.lyricsapplication.bd.IMusicaDataBase;
 import com.example.lyricsapplication.bd.MusicaDataBase;
-import com.example.lyricsapplication.entity.Musica;
+import com.example.lyricsapplication.entity.Artista;
 
 public class EditLyricsActivity extends Activity implements OnClickListener {
 
-	private DataBase<Musica> database;
+	private IMusicaDataBase database;
 	private Button save;
 	private Button cancel; 
 	private EditText edName;
@@ -57,8 +57,10 @@ public class EditLyricsActivity extends Activity implements OnClickListener {
 
 			String name = edName.getText().toString();
 			String letra = edLyrics.getText().toString();
+			//FIXME obter Artista
+			Artista artista = null;
 
-			database.update(id, name, letra);
+			database.update(id, name, letra, artista);
 		}
 
 		Intent intent = new Intent(this, LyricsListActivity.class);

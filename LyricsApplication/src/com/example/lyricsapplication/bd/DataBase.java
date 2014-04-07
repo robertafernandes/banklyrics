@@ -8,7 +8,8 @@ public interface DataBase<T> {
 
 	public void remove(int id);
 	
-	public void update(int id, String data1, String data2);
+	//FIXME definir forma genérica
+	//public void update(int id, Object ... args);
 	
 	public List<T> getList(); 
 	

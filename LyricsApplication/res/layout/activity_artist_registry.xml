@@ -67,28 +67,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="5dp"
+            android:paddingBottom="10dp"
             android:autoLink="web"
             android:background="@drawable/botao_azul_seletor"
             android:padding="5dp"
-            android:text="Obter Imagem"
+            android:text="@string/bImage"
             android:textColor="#ffffff" />
-        
-
-        <Gallery
-            android:id="@+id/gallery1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"            
-            />
 
         <ImageView
             android:id="@+id/imViewArtist"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"            
-            android:ems="10"
+            android:layout_marginRight="10dp"           
+            
             android:gravity="top"
             android:src="@drawable/botao_azul_seletor" />
         
