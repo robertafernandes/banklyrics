@@ -118,7 +118,7 @@ public class ArtistaDataBase implements IArtistaDataBase{
 		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD, DbHelper.DATABASE_ID_FIELD,
 				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_IMAGEM_FIELD}; 
 		
-		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, null, null , null, null, null); 
+		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, null, null , null, null, DbHelper.DATABASE_NAME_FIELD); 
 		
 		c.moveToFirst();
 		while (!c.isAfterLast()) {			
@@ -150,7 +150,7 @@ public class ArtistaDataBase implements IArtistaDataBase{
 	}
 
 	@Override
-	public void update(int id, String nome, byte image[]) { 
+	public void update(int id, String nome, String image) { 
 		
 		db.beginTransaction();
 		try {

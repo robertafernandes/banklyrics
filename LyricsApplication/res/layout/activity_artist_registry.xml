@@ -45,7 +45,7 @@
             android:textColor="#808080" />
 
         <EditText
-            android:id="@+id/edNameArtist"
+            android:id="@+id/edName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -76,10 +76,11 @@
 
         <ImageView
             android:id="@+id/imViewArtist"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"           
+            android:layout_marginRight="10dp"   
+            android:paddingTop="10dp"        
             
             android:gravity="top"
             android:src="@drawable/botao_azul_seletor" />
