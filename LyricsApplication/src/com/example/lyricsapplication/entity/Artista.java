@@ -4,13 +4,13 @@ public class Artista {
 
 	private int id; 
 	private String name;
-	private byte[] image;    
+	private String image;    
 	
-	public Artista(String name, byte[] image) {
+	public Artista(String name, String image) {
 		this(0, name, image);
 	} 
 	
-	public Artista(int id, String name, byte[] image) {
+	public Artista(int id, String name, String image) {
 		super(); 
 		this.id = id;
 		this.name = name; 
@@ -30,11 +30,11 @@ public class Artista {
 		this.name = name;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	

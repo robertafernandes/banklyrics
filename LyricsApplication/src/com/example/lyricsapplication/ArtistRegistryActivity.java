@@ -31,7 +31,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 	
 	private ImageView imViewArtist;
 	
-	private byte picture[];
+	private String imageArtist;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 		bCancel.setOnClickListener(this);
 
 		edName = (EditText) findViewById(R.id.edName);
-		
+		 
 		imViewArtist = (ImageView) findViewById(R.id.imViewArtist);
  
 	}
@@ -67,7 +67,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 				Toast.makeText(this, "Você precisa especificar um nome!", Toast.LENGTH_SHORT).show();
 			} else {
 				String name = edName.getText().toString().trim();
-				database.insert(new Artista(name, picture));  
+				database.insert(new Artista(name, imageArtist));  
 				Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show(); 
 				startNewIntent(); 
 			}
@@ -92,19 +92,19 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
             Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
             cursor.moveToFirst();
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
+            imageArtist = cursor.getString(columnIndex);
             //byte picture[] = cursor.getString(columnIndex);
             cursor.close();
-            Bitmap bmp = BitmapFactory.decodeFile(picturePath);                      
+            Bitmap bmp = BitmapFactory.decodeFile(imageArtist);                      
             
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            picture = stream.toByteArray();
+            //ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            //bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            //picture = stream.toByteArray();
                           
             //FIXME desnecessario apenas para teste
-            Bitmap theImage = BitmapFactory.decodeByteArray(picture, 0, picture.length); 
+            //Bitmap theImage = BitmapFactory.decodeByteArray(picture, 0, picture.length); 
             
-            imViewArtist.setImageBitmap(theImage);
+            imViewArtist.setImageBitmap(bmp);
         }
     }		
 

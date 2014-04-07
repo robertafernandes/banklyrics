@@ -89,6 +89,7 @@ public class ArtistaDataBase implements IArtistaDataBase{
 		return list;
 	}
 	
+	/*
 	public Artista getSingle(int id) {
 				
 		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD, DbHelper.DATABASE_ID_FIELD,
@@ -108,19 +109,20 @@ public class ArtistaDataBase implements IArtistaDataBase{
 		
 		return artista;
 	}
+	*/
 	
 	@Override
 	public List<Artista> getList() {
 		List<Artista> list = new ArrayList<Artista>(); 
 		
-		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD }; 
+		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD, DbHelper.DATABASE_ID_FIELD,
+				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_IMAGEM_FIELD}; 
 		
 		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, null, null , null, null, null); 
 		
 		c.moveToFirst();
 		while (!c.isAfterLast()) {			
-			int id = c.getInt(c.getColumnIndex(DbHelper.DATABASE_ID_FIELD));
-			Artista artista = this.getSingle(id);
+			Artista artista = fillArtista(c);
 			list.add(artista);
 			Log.d("artista-db", artista.getName());
 			c.moveToNext(); 
@@ -142,7 +144,7 @@ public class ArtistaDataBase implements IArtistaDataBase{
 	private Artista fillArtista(Cursor c) {    
 		int id = c.getInt(c.getColumnIndex(DbHelper.DATABASE_ID_FIELD));
 		String name = c.getString(c.getColumnIndex(DbHelper.DATABASE_NAME_FIELD));
-		byte image[] = c.getBlob(c.getColumnIndex(DbHelper.DATABASE_IMAGEM_FIELD));
+		String image = c.getString(c.getColumnIndex(DbHelper.DATABASE_IMAGEM_FIELD));
 
 		return new Artista(id, name, image);  
 	}

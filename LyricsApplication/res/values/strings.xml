@@ -14,16 +14,21 @@
     <string name="title_activity_lyrics_registry">New Lyric</string>
     <string name="title_activity_lyrics_list">List Lyrics</string>    
     <string name="hello_world">Hello world!</string>
-    <string name="header">Insert a new lyric</string>
-    <string name="lyric_name">Song Title</string>
+    <string name="lyrics_header">Insert a new lyric</string>
+    <string name="artist_header">Insert a new Singer</string>
+    <string name="lyric_name_focus">Insira o nome da música</string>
+    <string name="artist_name_focus">Selecione o artista</string> 
+    <string name="lyric_focus">Insira a letra da música</string>
     <string name="letra">Song Lyrics</string>
     <string name="artist_name">Singer Name</string>
     <string name="imagem">Image</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
-    <string name="headerList">Songs</string>
+    <string name="lyric_Header_List">Songs</string>
+    <string name="artist_Header_List">Singer</string>
     <string name="voltar">Back</string>
-    <string name="bInsert">New Song</string>
+    <string name="b_Artist_Insert">New Singer</string>
+    <string name="b_Lyric_Insert">New Song</string>    
     <string name="title_activity_view_lyrics">ViewLyricsActivity</string>
     <string name="view">Song</string>
 

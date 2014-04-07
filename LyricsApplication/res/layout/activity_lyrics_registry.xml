@@ -20,12 +20,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:background="@drawable/headerbottom"
+            android:background="#5498D2"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp"
-            android:text="@string/header"
+            android:text="@string/lyrics_header"
             android:textColor="#ffffff" />
     </LinearLayout>
 
@@ -35,31 +35,33 @@
         android:layout_weight="0.80"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:text="@string/lyric_name"
-            android:textColor="#808080" />
-
         <EditText
-            android:id="@+id/edName"
+            android:id="@+id/edName" 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="15dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:ems="10" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:text="@string/letra"
-            android:textColor="#808080" />
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:background="@drawable/edittext"
+            android:ems="10"  
+            android:hint="@string/lyric_name_focus"
+            android:textColor="#808080" /> 
+        
+         <EditText
+             android:id="@+id/edArtirst"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginTop="15dp"
+             android:background="@drawable/edittext"
+             android:ems="10"
+             android:padding="5dp" 
+             android:hint="@string/artist_name_focus" 
+             android:textColor="#808080"
+             android:textSize="15dp" />
 
         <EditText
             android:id="@+id/edLyrics"
@@ -68,8 +70,15 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="5.60"
+            android:layout_marginTop="15dp" 
+            android:background="@drawable/edittext"
             android:ems="10"
             android:gravity="top"
+            android:hint="@string/lyric_focus" 
+            android:textColor="#808080"
+            android:textSize="15dp"
+            android:padding="5dp"
+            android:layout_marginBottom="15dp" 
             android:inputType="textMultiLine" >
 
             <requestFocus />
@@ -81,7 +90,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="0dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/headerbottom"
+        android:background="#5498D2"
         android:gravity="center_vertical|center_horizontal"
         android:orientation="horizontal" >
 
