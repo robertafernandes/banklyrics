@@ -29,7 +29,7 @@
         <activity
             android:name="com.example.lyricsapplication.ArtistsListActivity"
             android:label="@string/title_activity_artist_list" >
-        </activity>        
+        </activity>
         <activity
             android:name="com.example.lyricsapplication.LyricsRegistryActivity"
             android:label="@string/title_activity_lyrics_registry" >
@@ -45,6 +45,10 @@
         <activity
             android:name="com.example.lyricsapplication.ViewLyricsActivity"
             android:label="@string/title_activity_view_lyrics" >
+        </activity>
+        <activity
+            android:name="com.example.lyricsapplication.ViewListActivity"
+            android:label="@string/title_activity_view_list" >
         </activity>
     </application>
 

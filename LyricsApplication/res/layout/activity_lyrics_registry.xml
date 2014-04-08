@@ -51,26 +51,12 @@
             android:textSize="15dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:padding="5dp"
             android:background="@drawable/edittext"
             android:ems="10"  
-            android:hint="@string/lyric_name_focus"
-            android:textColor="#808080" /> 
-        
-         <EditText
-             android:id="@+id/edArtirst"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:layout_marginRight="10dp"
-             android:layout_marginTop="15dp"
-             android:background="@drawable/edittext"
-             android:ems="10"
-             android:padding="5dp" 
-             android:hint="@string/artist_name_focus" 
-             android:textColor="#808080"
-             android:textSize="15dp" />
+            android:hint="@string/lyric_name_focus" 
+            android:textColor="#808080" />
 
         <EditText
             android:id="@+id/edLyrics"
@@ -79,7 +65,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="5.60"
-            android:layout_marginTop="15dp" 
+            android:layout_marginTop="10dp" 
             android:background="@drawable/edittext"
             android:ems="10"
             android:gravity="top"
@@ -87,11 +73,24 @@
             android:textColor="#808080"
             android:textSize="15dp"
             android:padding="5dp"
-            android:layout_marginBottom="15dp" 
+            
             android:inputType="textMultiLine" >
 
             <requestFocus />
         </EditText>
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext"
+            android:hint="Clique para selecionar o artista"
+            android:padding="5dp"
+            android:textSize="15dp" />
+
     </LinearLayout>
 
     <LinearLayout

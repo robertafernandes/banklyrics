@@ -30,10 +30,10 @@ public class LyricsMainActivity extends Activity {
 			break; 
 
 		case R.id.bFindLyric:
-			it = new Intent(this, LyricsListActivity.class);
+			it = new Intent(this, ViewListActivity.class);
 			it.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(it);
-			break;
+			break; 
 
 		}
 
