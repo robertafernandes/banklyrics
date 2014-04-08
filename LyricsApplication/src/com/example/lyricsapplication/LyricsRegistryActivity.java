@@ -50,8 +50,13 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 		spinnerArtist = (Spinner)findViewById(R.id.spinArtist);
 		List<Artista> artistas = databaseArtista.getList();
         spinnerArtist.setAdapter(new ArtistaItemSpinnerAdapter(artistas, this));
+<<<<<<< HEAD
 	} 
  
+=======
+	}
+
+>>>>>>> branch 'master' of https://github.com/robertafernandes/banklyrics.git
 	@Override
 	public void onClick(View v) {
 		if (v == bSave){
