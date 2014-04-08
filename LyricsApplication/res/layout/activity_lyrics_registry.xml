@@ -87,19 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.80"
         android:orientation="vertical" >
-
-        <Spinner
-            android:id="@+id/spinArtist"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edittext"
-            android:hint="Clique para selecionar o artista"
-            android:padding="5dp"
-            android:textSize="15dp" />
-
+        
         <EditText
             android:id="@+id/edName" 
             android:layout_width="match_parent"
@@ -113,6 +101,19 @@
             android:ems="10"  
             android:hint="@string/lyric_name_focus" 
             android:textColor="#808080" />
+
+        <Spinner
+            android:id="@+id/spinArtist"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.36"
+            android:background="@drawable/spinnertext" 
+            android:hint="Clique para selecionar o artista" 
+            android:textSize="15dp" />
+ 
 
         <EditText
             android:id="@+id/edLyrics"
