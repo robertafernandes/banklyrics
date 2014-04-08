@@ -14,12 +14,12 @@ import android.widget.TextView;
 
 import com.example.lyricsapplication.entity.Artista;
 
-public class ArtistaAdapter extends BaseAdapter {
+public class ArtistaItemSpinnerAdapter extends BaseAdapter {
 	
 	private List<Artista> artistas;
 	private Context contexto; 
 
-	public ArtistaAdapter(List<Artista> artistas, Context contexto) { 
+	public ArtistaItemSpinnerAdapter(List<Artista> artistas, Context contexto) { 
 		this.artistas = artistas;
 		this.contexto = contexto;
 	}
@@ -44,10 +44,8 @@ public class ArtistaAdapter extends BaseAdapter {
 		Artista artista = artistas.get(position);  
 		
 		View linha = LayoutInflater.from(contexto).inflate(R.layout.item_spinner_artista, null);
- 
-		TextView txtView = (TextView) linha.findViewById(R.id.textView1);		
 
-		txtView.setText(artista.getName());  
+		TextView txtView = (TextView) linha.findViewById(R.id.textName);  
 		
 		String image = artista.getImage();
 		if (image != null && !image.isEmpty()) {
@@ -55,7 +53,9 @@ public class ArtistaAdapter extends BaseAdapter {
 			Bitmap bmp = BitmapFactory.decodeFile(image);
 			visualizar.setImageBitmap(bmp);
 		}
-	  
+		
+		txtView.setText(artista.getName());     
+		  
 		return linha; 
 	}
 }

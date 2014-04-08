@@ -43,12 +43,14 @@ public class ArtistsListActivity extends Activity {
 			final TextView name = (TextView) child.findViewById(R.id.textName); 
 			name.setText(artista.getName()); 
 						
+			
 			if (image != null && !image.isEmpty()) {
 				ImageView visualizar = (ImageView) child.findViewById(R.id.imageView1);
-				Bitmap bmp = BitmapFactory.decodeFile(artista.getImage());
+				Bitmap bmp = BitmapFactory.decodeFile(image);
 				//Bitmap bm = BitmapFactory.decodeByteArray(image, 0, image.length);
 				visualizar.setImageBitmap(bmp);
 			}
+			
 			/*
 			visualizar.setOnClickListener(new OnClickListener() {
 				@Override 
