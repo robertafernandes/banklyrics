@@ -1,5 +1,6 @@
 package com.example.lyricsapplication.bd;
 
+import java.io.UTFDataFormatException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.UserDictionary.Words;
 
 import com.example.lyricsapplication.entity.Artista;
 import com.example.lyricsapplication.entity.Musica;
@@ -123,9 +125,9 @@ public class MusicaDataBase implements IMusicaDataBase{
 		return result;
 	}
 
-	private Musica fillMusica(Cursor c) {    
+	private Musica fillMusica(Cursor c) {      
 		int id = c.getInt(c.getColumnIndex(DbHelper.DATABASE_ID_FIELD));
-		String name = c.getString(c.getColumnIndex(DbHelper.DATABASE_NAME_FIELD));
+		String name = c.getString(c.getColumnIndex(DbHelper.DATABASE_NAME_FIELD)); 
 		String letra = c.getString(c.getColumnIndex(DbHelper.DATABASE_LETRA_FIELD));
 		
 		//FIXME receber Artista

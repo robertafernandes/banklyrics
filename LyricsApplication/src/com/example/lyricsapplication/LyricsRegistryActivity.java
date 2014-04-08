@@ -25,7 +25,7 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_lyrics_registry);
+		setContentView(R.layout.activity_lyrics_registry);   
 
 		database = MusicaDataBase.getInstance(this);
 
@@ -48,7 +48,7 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 			} else {
 				String name = edName.getText().toString().trim();
 				String letra = edLyrics.getText().toString().trim(); 
-				//FIXME receber Artista
+				//FIXME receber Artista 
 				Artista artista = null;
 				database.insert(new Musica(name, letra, artista));  
 				Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show(); 

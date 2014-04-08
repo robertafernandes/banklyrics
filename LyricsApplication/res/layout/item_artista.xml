@@ -14,12 +14,8 @@
         android:gravity="center_vertical"
         android:orientation="horizontal" >
 
-        <ImageView
-<<<<<<< HEAD
-            android:id="@+id/bRegisterLyric"
-=======
-            android:id="@+id/imageView1"
->>>>>>> branch 'master' of https://github.com/robertafernandes/banklyrics.git
+        <ImageView 
+            android:id="@+id/imageView1" 
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_weight="0.8"

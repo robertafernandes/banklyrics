@@ -41,8 +41,7 @@ public class LyricsListActivity extends Activity {
 			final TextView name = (TextView) child.findViewById(R.id.textView1); 
 			name.setText(musica.getName()); 
 			
-			ImageView visualizar = (ImageView) child.findViewById(R.id.imageView1);
-			visualizar.setOnClickListener(new OnClickListener() {
+			name.setOnClickListener(new OnClickListener() { 
 				@Override 
 				public void onClick(View v) {
 					Intent intent = new Intent(LyricsListActivity.this, ViewLyricsActivity.class);  
