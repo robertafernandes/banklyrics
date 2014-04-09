@@ -8,8 +8,9 @@ public interface DataBase<T> {
 
 	public void remove(int id);
 	
-	//FIXME definir forma genérica
-	//public void update(int id, Object ... args);
+	public void update(T object);
+	
+	public T getUnique(int id);
 	
 	public List<T> getList(); 
 	

@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.example.lyricsapplication.entity.Artista;
 
-public class ArtistaDataBase implements IArtistaDataBase{ 
+public class ArtistaDataBase implements DataBase<Artista>{ 
 	
 	private static final ArtistaDataBase instance = new ArtistaDataBase();
 	
@@ -27,7 +27,7 @@ public class ArtistaDataBase implements IArtistaDataBase{
 	 * @param ctx Context
 	 * @return The UserDataBase instance.
 	 */
-	public static IArtistaDataBase getInstance(Context ctx) {
+	public static DataBase<Artista> getInstance(Context ctx) {
 		if (instance.db == null || !instance.db.isOpen()) {
 			instance.db = new DbHelper(ctx).getWritableDatabase();
 		}
@@ -89,15 +89,16 @@ public class ArtistaDataBase implements IArtistaDataBase{
 		return list;
 	}
 	
-	/*
-	public Artista getSingle(int id) {
+	
+	public Artista getUnique(int id) {
 				
 		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD, DbHelper.DATABASE_ID_FIELD,
 				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_IMAGEM_FIELD}; 
 		
-		String where = DbHelper.DATABASE_ID_FIELD + " = " + id;
+		String where = DbHelper.DATABASE_ID_FIELD + " = ?";
 
-		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, where, null, null, null, null);
+		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, where, 
+				new String[] { String.valueOf(id) }, null, null, null);
         
         c.moveToFirst();
         
@@ -109,7 +110,7 @@ public class ArtistaDataBase implements IArtistaDataBase{
 		
 		return artista;
 	}
-	*/
+	
 	
 	@Override
 	public List<Artista> getList() {
@@ -150,15 +151,16 @@ public class ArtistaDataBase implements IArtistaDataBase{
 	}
 
 	@Override
-	public void update(int id, String nome, String image) { 
+	public void update(Artista artista) { 
 		
 		db.beginTransaction();
 		try {
 			ContentValues valores = new ContentValues();
-			valores.put(DbHelper.DATABASE_NAME_FIELD, nome); 
-			valores.put(DbHelper.DATABASE_IMAGEM_FIELD, image);
+			valores.put(DbHelper.DATABASE_NAME_FIELD, artista.getName()); 
+			valores.put(DbHelper.DATABASE_IMAGEM_FIELD, artista.getImage());
 			
-			db.update(DbHelper.TBL_ARTISTA, valores, DbHelper.DATABASE_ID_FIELD + "=?", new String[] { String.valueOf(id) });
+			db.update(DbHelper.TBL_ARTISTA, valores, DbHelper.DATABASE_ID_FIELD + "=?", 
+					new String[] { String.valueOf(artista.getId()) });
 			db.setTransactionSuccessful();
 		} finally { 
 			db.endTransaction();

@@ -1,6 +1,5 @@
 package com.example.lyricsapplication.bd;
 
-import java.io.UTFDataFormatException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,19 +7,19 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.UserDictionary.Words;
 
 import com.example.lyricsapplication.entity.Artista;
 import com.example.lyricsapplication.entity.Musica;
 
-public class MusicaDataBase implements IMusicaDataBase{ 
+public class MusicaDataBase implements DataBase<Musica>{ 
 	
 	private static final MusicaDataBase instance = new MusicaDataBase();
+	private static DataBase<Artista> dataBaseArtista;
 	
 	private SQLiteDatabase db;
 	 
 	public MusicaDataBase() {
-		// Do nothing 
+		// Do nothing 		
 	} 
 	
 	/**
@@ -29,9 +28,10 @@ public class MusicaDataBase implements IMusicaDataBase{
 	 * @param ctx Context
 	 * @return The UserDataBase instance.
 	 */
-	public static IMusicaDataBase getInstance(Context ctx) {
+	public static DataBase<Musica> getInstance(Context ctx) {
 		if (instance.db == null || !instance.db.isOpen()) {
 			instance.db = new DbHelper(ctx).getWritableDatabase();
+			dataBaseArtista = ArtistaDataBase.getInstance(ctx);
 		}
 		return instance;
 	}
@@ -42,7 +42,12 @@ public class MusicaDataBase implements IMusicaDataBase{
 
 		ContentValues cv = new ContentValues();
 		cv.put(DbHelper.DATABASE_NAME_FIELD, musica.getName()); 
-		cv.put(DbHelper.DATABASE_LETRA_FIELD, musica.getLyrics()); 
+		cv.put(DbHelper.DATABASE_LETRA_FIELD, musica.getLyrics());		
+		if (musica.getArtista() != null) {
+			int idArtista = musica.getArtista().getId();
+			cv.put(DbHelper.DATABASE_ID_ARTISTA_FIELD, idArtista);
+		}
+		
 		
 		try {
 			db.beginTransaction();
@@ -73,7 +78,8 @@ public class MusicaDataBase implements IMusicaDataBase{
 		
 		List<Musica> list = new ArrayList<Musica>();
 		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD, DbHelper.DATABASE_ID_FIELD,
-				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_LETRA_FIELD}; 
+				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_LETRA_FIELD,
+				DbHelper.DATABASE_ID_ARTISTA_FIELD}; 
 		
 		String where = DbHelper.DATABASE_NAME_FIELD + " LIKE '%"   
         + songName +"%'";  
@@ -96,7 +102,8 @@ public class MusicaDataBase implements IMusicaDataBase{
 		List<Musica> list = new ArrayList<Musica>(); 
 		
 		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD,
-				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_LETRA_FIELD}; 
+				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_LETRA_FIELD,
+				DbHelper.DATABASE_ID_ARTISTA_FIELD}; 
 		
 //		String where = DbHelper.DATABASE_DATE_FIELD + " >= '"   
 //        + Util.getFirstDayMonth() +"' and " + DbHelper.DATABASE_DATE_FIELD + " <= '"   
@@ -129,26 +136,43 @@ public class MusicaDataBase implements IMusicaDataBase{
 		int id = c.getInt(c.getColumnIndex(DbHelper.DATABASE_ID_FIELD));
 		String name = c.getString(c.getColumnIndex(DbHelper.DATABASE_NAME_FIELD)); 
 		String letra = c.getString(c.getColumnIndex(DbHelper.DATABASE_LETRA_FIELD));
-		
-		//FIXME receber Artista
+		int idArtista = c.getInt(c.getColumnIndex(DbHelper.DATABASE_ID_ARTISTA_FIELD));
+
 		Artista artista = null;
+		if (idArtista != 0) {
+			artista = dataBaseArtista.getUnique(idArtista);
+		}
+		
 		return new Musica(id, name, letra, artista);  
 	}
 
 	@Override
-	public void update(int id, String nome, String letra, Artista artista) { 
+	public void update(Musica musica) { 
 		
 		db.beginTransaction();
 		try {
 			ContentValues valores = new ContentValues();
-			valores.put(DbHelper.DATABASE_NAME_FIELD, nome); 
-			valores.put(DbHelper.DATABASE_LETRA_FIELD, letra);
+			valores.put(DbHelper.DATABASE_NAME_FIELD, musica.getName()); 
+			valores.put(DbHelper.DATABASE_LETRA_FIELD, musica.getLyrics());
+			int idArtista = 0;
+			if (musica.getArtista() != null) {
+				idArtista = musica.getArtista().getId();
+			}
+			valores.put(DbHelper.DATABASE_ID_ARTISTA_FIELD, idArtista);
 			
-			db.update(DbHelper.TBL_MUSICA, valores, DbHelper.DATABASE_ID_FIELD + "=?", new String[] { String.valueOf(id) });
+			db.update(DbHelper.TBL_MUSICA, valores, DbHelper.DATABASE_ID_FIELD + "=?", 
+					new String[] { String.valueOf(musica.getId()) });
 			db.setTransactionSuccessful();
 		} finally { 
 			db.endTransaction();
 		}
 		
 	}
+
+	@Override
+	public Musica getUnique(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
