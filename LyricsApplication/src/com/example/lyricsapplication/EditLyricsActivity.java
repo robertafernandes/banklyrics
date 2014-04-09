@@ -99,11 +99,12 @@ public class EditLyricsActivity extends Activity implements OnClickListener {
 			Artista artista = (Artista) artistaItemSpinnerAdapter.getItem(position);
 			Musica musica = new Musica(id, name, letra, artista);
 			databaseMusica.update(musica);
+			
+			Toast.makeText(this, "Alterado com sucesso!", Toast.LENGTH_SHORT).show();
 		}
 
 		Intent intent = new Intent(this, LyricsListActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-		startActivity(intent);
-		Toast.makeText(this, "Alterado com sucesso!", Toast.LENGTH_SHORT).show();   
+		startActivity(intent);		   
 	}
 }
