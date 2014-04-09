@@ -14,21 +14,20 @@ import android.widget.Toast;
 
 import com.example.lyricsapplication.bd.ArtistaDataBase;
 import com.example.lyricsapplication.bd.DataBase;
-import com.example.lyricsapplication.bd.IArtistaDataBase;
-import com.example.lyricsapplication.bd.IMusicaDataBase;
 import com.example.lyricsapplication.bd.MusicaDataBase;
 import com.example.lyricsapplication.entity.Artista;
 import com.example.lyricsapplication.entity.Musica;
 
 public class LyricsRegistryActivity extends Activity implements OnClickListener {
 
-	private IMusicaDataBase databaseMusica;
-	private IArtistaDataBase databaseArtista;
+	private DataBase<Musica> databaseMusica;
+	private DataBase<Artista> databaseArtista;
 	private Button bSave;
 	private Button bCancel;
 	private EditText edName;
 	private EditText edLyrics;
 	private Spinner spinnerArtist;
+	private ArtistaItemSpinnerAdapter artistaItemSpinnerAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +48,8 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 		
 		spinnerArtist = (Spinner)findViewById(R.id.spinArtist);
 		List<Artista> artistas = databaseArtista.getList();
-        spinnerArtist.setAdapter(new ArtistaItemSpinnerAdapter(artistas, this));
-
+		artistaItemSpinnerAdapter = new ArtistaItemSpinnerAdapter(artistas, this);
+        spinnerArtist.setAdapter(artistaItemSpinnerAdapter);
 	}
 
 	@Override
@@ -62,8 +61,8 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 			} else {
 				String name = edName.getText().toString().trim();
 				String letra = edLyrics.getText().toString().trim(); 
-				//FIXME receber Artista 
-				Artista artista = null;
+				int position = spinnerArtist.getSelectedItemPosition();
+				Artista artista = (Artista) artistaItemSpinnerAdapter.getItem(position);
 				databaseMusica.insert(new Musica(name, letra, artista));  
 				Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show(); 
 				startNewIntent(); 

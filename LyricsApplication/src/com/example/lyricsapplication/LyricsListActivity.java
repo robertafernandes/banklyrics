@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.lyricsapplication.bd.DataBase;
 import com.example.lyricsapplication.bd.MusicaDataBase;
+import com.example.lyricsapplication.entity.Artista;
 import com.example.lyricsapplication.entity.Musica;
 
 public class LyricsListActivity extends Activity {
@@ -38,6 +39,9 @@ public class LyricsListActivity extends Activity {
 			
 			final int id = musica.getId(); 
 			final String letra = musica.getLyrics();
+			final Artista artista = musica.getArtista();
+			final int idArtista = (artista ==null) ? 0 : artista.getId();
+			
 			final TextView name = (TextView) child.findViewById(R.id.textView1); 
 			name.setText(musica.getName()); 
 			
@@ -46,7 +50,8 @@ public class LyricsListActivity extends Activity {
 				public void onClick(View v) {
 					Intent intent = new Intent(LyricsListActivity.this, ViewLyricsActivity.class);  
 					intent.putExtra("nome", (String) name.getText());
-					intent.putExtra("letra", letra);   
+					intent.putExtra("letra", letra);
+					intent.putExtra("idArtista", idArtista);
 					intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			    	startActivity(intent);
 				}
@@ -59,7 +64,8 @@ public class LyricsListActivity extends Activity {
 					Intent intent = new Intent(LyricsListActivity.this, EditLyricsActivity.class); 
 					intent.putExtra("id", (Integer) id);  
 					intent.putExtra("nome", (String) name.getText());
-					intent.putExtra("letra", letra);  
+					intent.putExtra("letra", letra);					
+					intent.putExtra("idArtista", idArtista);  
 					intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			    	startActivity(intent);
 				}

@@ -1,7 +1,5 @@
 package com.example.lyricsapplication;
 
-import java.io.ByteArrayOutputStream;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -19,12 +17,11 @@ import android.widget.Toast;
 
 import com.example.lyricsapplication.bd.ArtistaDataBase;
 import com.example.lyricsapplication.bd.DataBase;
-import com.example.lyricsapplication.bd.IArtistaDataBase;
 import com.example.lyricsapplication.entity.Artista;
 
 public class ArtistRegistryActivity extends Activity implements OnClickListener {
 
-	private IArtistaDataBase database;
+	private DataBase<Artista> database;
 	private Button bImage;
 	private Button bCancel;
 	private Button bSave;
@@ -81,7 +78,8 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 					database.insert(new Artista(name, imageArtist));  
 					Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
 				} else {
-					database.update(id, name, imageArtist);
+					Artista artista = new Artista(id, name, imageArtist);
+					database.update(artista);
 					Toast.makeText(this, "Alterado com sucesso!", Toast.LENGTH_SHORT).show();
 				}
 				startNewIntent(); 

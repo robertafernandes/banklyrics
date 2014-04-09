@@ -22,7 +22,8 @@ public class ArtistaItemSpinnerAdapter extends BaseAdapter {
 
 	public ArtistaItemSpinnerAdapter(List<Artista> artistas, Context contexto) {
 		this.artistas = artistas;
-		Artista artistaVazio = new Artista("Insira o artista da música", null);
+		String nameArtist = contexto.getResources().getString(R.string.artist_name_focus);
+		Artista artistaVazio = new Artista(nameArtist, null);
 		this.artistas.add(0,artistaVazio);
 		this.contexto = contexto;
 	}
@@ -39,6 +40,17 @@ public class ArtistaItemSpinnerAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
+		return position;
+	}
+	
+	public int getPosition(Artista artista) {
+		int position = 0;
+		for (int i = 0; i < getCount(); i++) {
+			if (artista.getId() == ((Artista)getItem(i)).getId()) {
+				position = i;
+				break;
+			}
+		}
 		return position;
 	}
 
@@ -84,5 +96,5 @@ public class ArtistaItemSpinnerAdapter extends BaseAdapter {
 		return resizedBitmap;  
 		 
 	}
-
+		
 }
