@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.lyricsapplication.bd.ArtistaDataBase;
@@ -22,7 +23,7 @@ import com.example.lyricsapplication.entity.Artista;
 public class ArtistRegistryActivity extends Activity implements OnClickListener {
 
 	private DataBase<Artista> database;
-	private Button bImage;
+	private ImageView bImage;
 	private Button bCancel;
 	private Button bSave;
 	private EditText edName;
@@ -40,7 +41,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 
 		database = ArtistaDataBase.getInstance(this);
 
-		bImage = (Button) findViewById(R.id.bImage);
+		bImage = (ImageView) findViewById(R.id.imViewArtist); 
 		bImage.setOnClickListener(this);
 		
 		bSave = (Button) findViewById(R.id.bSave);

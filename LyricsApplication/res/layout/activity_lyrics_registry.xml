@@ -38,48 +38,6 @@
             android:text="@string/lyrics_header"
             android:textColor="#ffffff" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.02"
-            android:background="#6499E6"
-            android:gravity="center_vertical" >
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/upload" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:background="#6499E6"
-                android:gravity="center_vertical"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UPLOAD"
-                    android:textColor="#ffffff"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MP3"
-                    android:textColor="#ffffff"
-                    android:textSize="10dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -92,7 +50,7 @@
             android:id="@+id/edName" 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
@@ -112,7 +70,7 @@
             android:layout_weight="0.36"
             android:background="@drawable/spinnertext" 
             android:hint="Clique para selecionar o artista" 
-            android:textSize="15dp" />
+            android:textSize="15sp" />
  
 
         <EditText
@@ -128,13 +86,58 @@
             android:gravity="top"
             android:hint="@string/lyric_focus" 
             android:textColor="#808080"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:padding="5dp"
             
             android:inputType="textMultiLine" >
 
             <requestFocus />
         </EditText>
+
+        <LinearLayout
+            android:layout_width="149dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btuploadlayout"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:background="@drawable/btupload"  >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/upload" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:padding="0dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Upload MP3" 
+                    android:textColor="#6499E6"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

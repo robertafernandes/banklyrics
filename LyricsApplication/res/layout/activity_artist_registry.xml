@@ -14,16 +14,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="horizontal"
+        android:background="#3975CB" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#3975CB"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/artista" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:background="#5498D2"
+            android:background="#3975CB"
             android:paddingBottom="10dp" 
             android:paddingLeft="10dp"
-            android:paddingRight="20dp"
+            android:paddingRight="15dp"
             android:paddingTop="10dp"
             android:text="@string/artist_header"
             android:textColor="#ffffff" />
@@ -33,92 +43,63 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.80"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:text="@string/artist_name"
-            android:textColor="#808080" />
+        <ImageView
+            android:id="@+id/imViewArtist"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"   
+            android:layout_marginTop="10dp"         
+            android:background="@drawable/imagem" 
+            android:src="@drawable/picture" />
 
         <EditText
             android:id="@+id/edName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:ems="10" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:text="@string/imagem"
-            android:textColor="#808080" />
-        
-        <Button
-            android:id="@+id/bImage"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="5dp"
-            android:paddingBottom="10dp"
-            android:autoLink="web"
-            android:background="@drawable/botao_azul_seletor"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext"
+            android:ems="10"
+            android:hint="@string/artist_focus"
             android:padding="5dp"
-            android:text="@string/bImage"
-            android:textColor="#ffffff" />
+            android:textColor="#808080"
+            android:textSize="15sp" >
 
-        <ImageView
-            android:id="@+id/imViewArtist"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"   
-            android:paddingTop="10dp"        
-            
-            android:gravity="top"
-            android:src="@drawable/botao_azul_seletor" />
+            <requestFocus />
+        </EditText>
         
     </LinearLayout>
 
-    <LinearLayout
+     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginBottom="0dp"
         android:layout_marginTop="10dp"
-        android:background="#5498D2"
-        android:gravity="center_vertical|center_horizontal"
+        android:background="#3975CB"
+        android:gravity="center_vertical|right"
         android:orientation="horizontal" >
 
+        
         <Button
             android:id="@+id/bCancel"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:layout_marginRight="5dp"
-            android:autoLink="web"
-            android:background="@drawable/botao_azul_seletor"
-            android:gravity="center_vertical|center_horizontal|center"
-            android:padding="5dp"
-            android:text="@string/cancel"
-            android:textColor="#ffffff" />
-
-        <Button
-            android:id="@+id/bSave"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+             android:layout_width="25dp" 
+            android:layout_height="25dp"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
             android:autoLink="web"
-            android:background="@drawable/botao_azul_seletor"
-            android:padding="5dp"
-            android:text="@string/save"
+            android:background="@drawable/cancelar" /> 
+
+       <Button
+            android:id="@+id/bSave"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/salvar"
             android:textColor="#ffffff" />
 
     </LinearLayout>

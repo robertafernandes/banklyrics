@@ -15,7 +15,8 @@
     <string name="title_activity_lyrics_list">List Lyrics</string>
     <string name="hello_world">Hello world!</string>
     <string name="lyrics_header">Nova Música</string>
-    <string name="artist_header">Insert a new Singer</string>
+    <string name="artist_header">Novo Artista</string>
+    <string name="artist_focus">Insira o nome do artista</string>
     <string name="lyric_name_focus">Insira o nome da música</string>
     <string name="artist_name_focus">Selecione o artista</string>
     <string name="lyric_focus">Insira a letra da música</string>
@@ -25,7 +26,8 @@
     <string name="imagem">Image</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
-    <string name="lyric_Header_List">Músicas</string>
+    <string name="lyric_Header_List">Letras de Músicas</string>
+    <string name="optMusica">Músicas</string>
     <string name="lyric_Header_artistas">Artistas</string>
     <string name="artist_Header_List">Singer</string>
     <string name="voltar">Back</string>
