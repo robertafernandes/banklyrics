@@ -13,7 +13,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.lyricsapplication.bd.ArtistaDataBase;
@@ -23,13 +22,11 @@ import com.example.lyricsapplication.entity.Artista;
 public class ArtistRegistryActivity extends Activity implements OnClickListener {
 
 	private DataBase<Artista> database;
-	private ImageView bImage;
 	private Button bCancel;
 	private Button bSave;
-	private EditText edName;
-	
 	private ImageView imViewArtist;
-	
+	private EditText edName;
+		
 	private String imageArtist;
 	
 	private int id;
@@ -40,10 +37,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 		setContentView(R.layout.activity_artist_registry);
 
 		database = ArtistaDataBase.getInstance(this);
-
-		bImage = (ImageView) findViewById(R.id.imViewArtist); 
-		bImage.setOnClickListener(this);
-		
+	
 		bSave = (Button) findViewById(R.id.bSave);
 		bSave.setOnClickListener(this);
 
@@ -53,6 +47,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 		edName = (EditText) findViewById(R.id.edName);
 		 
 		imViewArtist = (ImageView) findViewById(R.id.imViewArtist);
+		imViewArtist.setOnClickListener(this);
 		
 		id = getIntent().getIntExtra("id", 0); 
 		String nome = getIntent().getStringExtra("nome");
@@ -67,7 +62,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 
 	@Override
 	public void onClick(View v) {
-		if (v == bImage) {			
+		if (v == imViewArtist) {			
 			Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);			
 			startActivityForResult(i, RESULT_LOAD_IMAGE);			
 		} else if (v == bSave){
@@ -82,7 +77,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 					Artista artista = new Artista(id, name, imageArtist);
 					database.update(artista);
 					Toast.makeText(this, "Alterado com sucesso!", Toast.LENGTH_SHORT).show();
-				}
+				}				
 				startNewIntent(); 
 			}
 		} else {
@@ -91,6 +86,7 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 	}
 	
 	private void startNewIntent() {
+		this.finish();
 		Intent intent = new Intent(this, ArtistsListActivity.class); 
 		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
     	startActivity(intent);

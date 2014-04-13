@@ -69,24 +69,7 @@ public class EditLyricsActivity extends Activity implements OnClickListener {
         spinnerArtist.setAdapter(artistaItemSpinnerAdapter);
         int position = artistaItemSpinnerAdapter.getPosition(artista);        
         spinnerArtist.setSelection(position);
-        //artistas.
-        
-        /*
-        spinnerArtist.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
-			//	artistaItemSpinnerAdapter.getItem(position);
-				spinnerArtist.getSelectedItem();
-				
-				
-			}
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub				
-			}
-       }); 
-       */
+
 	}
 
 	public void onClick(View v) {

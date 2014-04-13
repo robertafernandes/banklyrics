@@ -84,7 +84,8 @@ public class MusicaDataBase implements DataBase<Musica>{
 		String where = DbHelper.DATABASE_NAME_FIELD + " LIKE '%"   
         + songName +"%'";  
 
-		Cursor c = db.query(DbHelper.TBL_MUSICA, columns, where, null, null, null, DbHelper.DATABASE_NAME_FIELD);
+		Cursor c = db.query(DbHelper.TBL_MUSICA, columns, where, null, null, null, 
+				DbHelper.DATABASE_NAME_FIELD + DbHelper.ORDER_ASC);
         
         c.moveToFirst();
         
@@ -105,13 +106,8 @@ public class MusicaDataBase implements DataBase<Musica>{
 				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_LETRA_FIELD,
 				DbHelper.DATABASE_ID_ARTISTA_FIELD}; 
 		
-//		String where = DbHelper.DATABASE_DATE_FIELD + " >= '"   
-//        + Util.getFirstDayMonth() +"' and " + DbHelper.DATABASE_DATE_FIELD + " <= '"   
-//        + Util.getLastDayMonth() +"'"; 
-		
-//		Log.d("elfinha", "data 1 : " + Util.getFirstDayMonth() + " data 2: " + Util.getLastDayMonth());
-		
-		Cursor c = db.query(DbHelper.TBL_MUSICA, columns, null, null , null, null, null); 
+		Cursor c = db.query(DbHelper.TBL_MUSICA, columns, null, null , null, null, 
+				DbHelper.DATABASE_NAME_FIELD + DbHelper.ORDER_ASC); 
 		
 		c.moveToFirst();
 		while (!c.isAfterLast()) {

@@ -22,6 +22,8 @@ public class DbHelper extends SQLiteOpenHelper {
 	
 	public static final String DATABASE_IMAGEM_FIELD = "imagem";
 	
+	public static final String ORDER_ASC = " asc";
+	
 	private static final int DBVERSION = 3;
 
 	public DbHelper(Context context) {

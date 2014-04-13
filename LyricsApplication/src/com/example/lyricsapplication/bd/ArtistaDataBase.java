@@ -76,7 +76,8 @@ public class ArtistaDataBase implements DataBase<Artista>{
 		String where = DbHelper.DATABASE_NAME_FIELD + " LIKE '%"   
         + artistName +"%'";  
 
-		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, where, null, null, null, DbHelper.DATABASE_NAME_FIELD);
+		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, where, null, null, null, 
+				DbHelper.DATABASE_NAME_FIELD + DbHelper.ORDER_ASC);
         
         c.moveToFirst();
         
@@ -119,7 +120,8 @@ public class ArtistaDataBase implements DataBase<Artista>{
 		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD, DbHelper.DATABASE_ID_FIELD,
 				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_IMAGEM_FIELD}; 
 		
-		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, null, null , null, null, DbHelper.DATABASE_NAME_FIELD); 
+		Cursor c = db.query(DbHelper.TBL_ARTISTA, columns, null, null , null, null, 
+				DbHelper.DATABASE_NAME_FIELD + DbHelper.ORDER_ASC); 
 		
 		c.moveToFirst();
 		while (!c.isAfterLast()) {			

@@ -51,19 +51,6 @@ public class ArtistsListActivity extends Activity {
 				visualizar.setImageBitmap(bmp);
 			}
 			
-			/*
-			visualizar.setOnClickListener(new OnClickListener() {
-				@Override 
-				public void onClick(View v) {
-					Intent intent = new Intent(ArtistsListActivity.this, ViewLyricsActivity.class);  
-					intent.putExtra("nome", (String) name.getText());
-					intent.putExtra("letra", letra);   
-					intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-			    	startActivity(intent);
-				}
-			});	 
-			*/
-			
 			ImageView editar = (ImageView) child.findViewById(R.id.imageView2);
 			editar.setOnClickListener(new OnClickListener() {
 				@Override 
@@ -73,7 +60,6 @@ public class ArtistsListActivity extends Activity {
 					intent.putExtra("id", (Integer) id);  
 					intent.putExtra("nome", (String) name.getText());
 					intent.putExtra("imagem", image);  
-					//intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			    	startActivity(intent);
 				}
 			});
@@ -103,7 +89,6 @@ public class ArtistsListActivity extends Activity {
 	
 	public void inserir(View view) {
 		Intent intent = new Intent(this, ArtistRegistryActivity.class);
-		//intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 		startActivity(intent); 
 	} 
 
