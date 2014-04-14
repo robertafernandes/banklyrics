@@ -44,7 +44,6 @@
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:background="@drawable/categorias"
        android:orientation="horizontal">
  
    <LinearLayout
@@ -52,6 +51,7 @@
        android:layout_height="wrap_content"
        android:gravity="center_horizontal|center_vertical"
        android:orientation="horizontal" 
+       android:background="@drawable/categorias"
        android:layout_weight="1"> 
 
         <TextView
@@ -68,7 +68,8 @@
    <LinearLayout
        android:layout_width="wrap_content"
        android:layout_height="fill_parent"
-       android:gravity="center_vertical" >
+       android:gravity="center_vertical"
+       android:background="@drawable/categorias" >
 
        <ImageView
            android:id="@+id/imageView1"
@@ -108,7 +109,12 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_weight="1"
-           android:paddingLeft="20dp"
+           android:paddingLeft="10dp"
+           android:paddingTop="5dp"
+           android:paddingBottom="5dp"
+           android:hint="Pesquise uma música"
+           android:textSize="15sp"
+           android:textColor="#808080"
            android:ems="10"
            android:background="@drawable/searchtext" > 
 

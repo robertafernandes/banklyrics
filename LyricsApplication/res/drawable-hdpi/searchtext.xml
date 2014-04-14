@@ -10,8 +10,8 @@
 				    <stroke android:width="0.5dp" android:color="#80BEBEBE" />
 				</shape>
             </item> 
-            <item android:left="10dp">
-                <bitmap android:src="@drawable/lupa" android:gravity="center|left" />  
+            <item android:right="10dp">
+                <bitmap android:src="@drawable/lupa" android:gravity="center|right" />  
             </item>
         </layer-list>
     </item>
