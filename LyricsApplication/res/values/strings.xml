@@ -29,7 +29,7 @@
     <string name="lyric_Header_List">Letras de Músicas</string>
     <string name="optMusica">Músicas</string>
     <string name="lyric_Header_artistas">Artistas</string>
-    <string name="artist_Header_List">Singer</string>
+    <string name="artist_Header_List">Artistas</string>
     <string name="voltar">Back</string>
     <string name="b_Artist_Insert">New Singer</string>
     <string name="b_Lyric_Insert">New Song</string>

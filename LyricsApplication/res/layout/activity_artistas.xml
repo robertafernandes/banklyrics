@@ -11,18 +11,27 @@
     android:paddingTop="0dp"
     tools:context=".TimesActivity" >
 
-    <LinearLayout
+   <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:background="#3975CB"
+        android:orientation="horizontal" > 
+        
+         <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:src="@drawable/listamusicas" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:background="@drawable/headerbottom"
+            android:background="#3975CB"
             android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="3dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp"
             android:text="@string/artist_Header_List"
@@ -46,40 +55,33 @@
 
     </LinearLayout>
 
-    <LinearLayout
+      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginBottom="0dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/headerbottom"
-        android:gravity="center_vertical|center_horizontal"
-        android:onClick="inserir"
+        android:background="#3975CB"
+        android:gravity="center_vertical|right"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/bHome"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:layout_marginLeft="5dp"
-            android:autoLink="web"
-            android:background="@drawable/botao_azul_seletor"
-            android:onClick="voltar"
-            android:padding="5dp"
-            android:text="@string/voltar"
-            android:textColor="#ffffff" />
+            android:layout_width="25dp"
+             android:layout_height="25dp"
+             android:layout_gravity="right|center_vertical"
+             android:layout_marginRight="15dp"
+             android:autoLink="web"
+             android:background="@drawable/cancelar"
+             android:onClick="voltar" />
         
         <Button
             android:id="@+id/bInserir"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="5dp"
-            android:autoLink="web"
-            android:background="@drawable/botao_azul_seletor"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/inserir"
             android:onClick="inserir"
-            android:padding="5dp"
-            android:text="@string/b_Artist_Insert"
             android:textColor="#ffffff" />
 
     </LinearLayout>
