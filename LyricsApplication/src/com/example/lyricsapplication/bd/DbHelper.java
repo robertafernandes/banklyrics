@@ -22,6 +22,8 @@ public class DbHelper extends SQLiteOpenHelper {
 	
 	public static final String DATABASE_IMAGEM_FIELD = "imagem";
 	
+	public static final String DATABASE_ARQUIVO_AUDIO_FIELD = "arquivoAudio";
+	
 	public static final String ORDER_ASC = " asc";
 	
 	private static final int DBVERSION = 3;
@@ -33,11 +35,12 @@ public class DbHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("CREATE TABLE "+TBL_ARTISTA+" ( "+DATABASE_ID_FIELD+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-				+ DATABASE_NAME_FIELD+ " TEXT NOT NULL, "+ DATABASE_IMAGEM_FIELD +" TEXT)");
+				+ DATABASE_NAME_FIELD+ " TEXT COLLATE NOCASE NOT NULL, "+ DATABASE_IMAGEM_FIELD +" TEXT)");
+		
 		
 		db.execSQL("CREATE TABLE "+TBL_MUSICA+" ( "+DATABASE_ID_FIELD+" INTEGER PRIMARY KEY AUTOINCREMENT, "				
-				+ DATABASE_NAME_FIELD+ " TEXT NOT NULL, "+ DATABASE_LETRA_FIELD +" TEXT NOT NULL, "
-				+ DATABASE_ID_ARTISTA_FIELD + " INTEGER, "
+				+ DATABASE_NAME_FIELD+ " TEXT COLLATE NOCASE NOT NULL, "+ DATABASE_LETRA_FIELD +" TEXT NOT NULL, "
+				+ DATABASE_ARQUIVO_AUDIO_FIELD + " TEXT," + DATABASE_ID_ARTISTA_FIELD + " INTEGER, "
 				+ "FOREIGN KEY("+DATABASE_ID_ARTISTA_FIELD+") REFERENCES "+TBL_ARTISTA+"("+DATABASE_ID_FIELD+"))");		
 	}
 

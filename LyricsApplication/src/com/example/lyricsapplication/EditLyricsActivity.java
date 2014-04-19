@@ -29,6 +29,7 @@ public class EditLyricsActivity extends Activity implements OnClickListener {
 	private EditText edLyrics;
 	private Spinner spinnerArtist;
 	private ArtistaItemSpinnerAdapter artistaItemSpinnerAdapter;
+	private String arquivoAudio; 
 		
 	int id;
 
@@ -80,7 +81,7 @@ public class EditLyricsActivity extends Activity implements OnClickListener {
 			String letra = edLyrics.getText().toString();
 			int position = spinnerArtist.getSelectedItemPosition();
 			Artista artista = (Artista) artistaItemSpinnerAdapter.getItem(position);
-			Musica musica = new Musica(id, name, letra, artista);
+			Musica musica = new Musica(id, name, letra, arquivoAudio, artista);
 			databaseMusica.update(musica);
 			
 			Toast.makeText(this, "Alterado com sucesso!", Toast.LENGTH_SHORT).show();

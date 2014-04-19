@@ -28,6 +28,7 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 	private EditText edLyrics;
 	private Spinner spinnerArtist;
 	private ArtistaItemSpinnerAdapter artistaItemSpinnerAdapter;
+	private String arquivoAudio; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,7 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 				String letra = edLyrics.getText().toString().trim(); 
 				int position = spinnerArtist.getSelectedItemPosition();
 				Artista artista = (Artista) artistaItemSpinnerAdapter.getItem(position);
-				databaseMusica.insert(new Musica(name, letra, artista));  
+				databaseMusica.insert(new Musica(name, letra, arquivoAudio, artista));  
 				Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show(); 
 				startNewIntent(); 
 			}

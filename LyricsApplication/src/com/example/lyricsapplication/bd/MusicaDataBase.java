@@ -77,9 +77,9 @@ public class MusicaDataBase implements DataBase<Musica>{
 	public List<Musica> getList(String songName) {
 		
 		List<Musica> list = new ArrayList<Musica>();
-		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD, DbHelper.DATABASE_ID_FIELD,
+		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD, 
 				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_LETRA_FIELD,
-				DbHelper.DATABASE_ID_ARTISTA_FIELD}; 
+				DbHelper.DATABASE_ARQUIVO_AUDIO_FIELD, DbHelper.DATABASE_ID_ARTISTA_FIELD}; 
 		
 		String where = DbHelper.DATABASE_NAME_FIELD + " LIKE '%"   
         + songName +"%'";  
@@ -104,7 +104,7 @@ public class MusicaDataBase implements DataBase<Musica>{
 		
 		String[] columns = new String[] { DbHelper.DATABASE_ID_FIELD,
 				DbHelper.DATABASE_NAME_FIELD, DbHelper.DATABASE_LETRA_FIELD,
-				DbHelper.DATABASE_ID_ARTISTA_FIELD}; 
+				DbHelper.DATABASE_ARQUIVO_AUDIO_FIELD, DbHelper.DATABASE_ID_ARTISTA_FIELD}; 
 		
 		Cursor c = db.query(DbHelper.TBL_MUSICA, columns, null, null , null, null, 
 				DbHelper.DATABASE_NAME_FIELD + DbHelper.ORDER_ASC); 
@@ -132,6 +132,7 @@ public class MusicaDataBase implements DataBase<Musica>{
 		int id = c.getInt(c.getColumnIndex(DbHelper.DATABASE_ID_FIELD));
 		String name = c.getString(c.getColumnIndex(DbHelper.DATABASE_NAME_FIELD)); 
 		String letra = c.getString(c.getColumnIndex(DbHelper.DATABASE_LETRA_FIELD));
+		String arquivoAudio = c.getString(c.getColumnIndex(DbHelper.DATABASE_ARQUIVO_AUDIO_FIELD));
 		int idArtista = c.getInt(c.getColumnIndex(DbHelper.DATABASE_ID_ARTISTA_FIELD));
 
 		Artista artista = null;
@@ -139,7 +140,7 @@ public class MusicaDataBase implements DataBase<Musica>{
 			artista = dataBaseArtista.getUnique(idArtista);
 		}
 		
-		return new Musica(id, name, letra, artista);  
+		return new Musica(id, name, letra, arquivoAudio, artista);  
 	}
 
 	@Override
