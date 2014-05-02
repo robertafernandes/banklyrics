@@ -42,7 +42,8 @@ public class MusicaDataBase implements DataBase<Musica>{
 
 		ContentValues cv = new ContentValues();
 		cv.put(DbHelper.DATABASE_NAME_FIELD, musica.getName()); 
-		cv.put(DbHelper.DATABASE_LETRA_FIELD, musica.getLyrics());		
+		cv.put(DbHelper.DATABASE_LETRA_FIELD, musica.getLyrics());
+		cv.put(DbHelper.DATABASE_ARQUIVO_AUDIO_FIELD, musica.getArquivoAudio());	
 		if (musica.getArtista() != null) {
 			int idArtista = musica.getArtista().getId();
 			cv.put(DbHelper.DATABASE_ID_ARTISTA_FIELD, idArtista);
@@ -151,6 +152,7 @@ public class MusicaDataBase implements DataBase<Musica>{
 			ContentValues valores = new ContentValues();
 			valores.put(DbHelper.DATABASE_NAME_FIELD, musica.getName()); 
 			valores.put(DbHelper.DATABASE_LETRA_FIELD, musica.getLyrics());
+			valores.put(DbHelper.DATABASE_ARQUIVO_AUDIO_FIELD, musica.getArquivoAudio());
 			int idArtista = 0;
 			if (musica.getArtista() != null) {
 				idArtista = musica.getArtista().getId();

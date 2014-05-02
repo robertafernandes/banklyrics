@@ -78,14 +78,14 @@ public class ArtistRegistryActivity extends Activity implements OnClickListener 
 					database.update(artista);
 					Toast.makeText(this, "Alterado com sucesso!", Toast.LENGTH_SHORT).show();
 				}				
-				startNewIntent(); 
+				startNewListIntent(); 
 			}
 		} else {
-			startNewIntent();
+			startNewListIntent();
 		} 
 	}
 	
-	private void startNewIntent() {
+	private void startNewListIntent() {
 		this.finish();
 		Intent intent = new Intent(this, ArtistsListActivity.class); 
 		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

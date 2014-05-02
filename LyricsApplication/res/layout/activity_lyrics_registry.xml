@@ -95,6 +95,7 @@
         </EditText>
 
         <LinearLayout
+            android:id="@+id/linLayoutUploadSong"
             android:layout_width="149dp"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"

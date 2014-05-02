@@ -39,6 +39,7 @@ public class LyricsListActivity extends Activity {
 			
 			final int id = musica.getId(); 
 			final String letra = musica.getLyrics();
+			final String songPath = musica.getArquivoAudio();
 			final Artista artista = musica.getArtista();
 			final int idArtista = (artista ==null) ? 0 : artista.getId();
 			
@@ -51,6 +52,7 @@ public class LyricsListActivity extends Activity {
 					Intent intent = new Intent(LyricsListActivity.this, ViewLyricsActivity.class);  
 					intent.putExtra("nome", (String) name.getText());
 					intent.putExtra("letra", letra);
+					intent.putExtra("songPath", songPath);
 					intent.putExtra("idArtista", idArtista);
 					intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			    	startActivity(intent);
@@ -64,9 +66,9 @@ public class LyricsListActivity extends Activity {
 					Intent intent = new Intent(LyricsListActivity.this, EditLyricsActivity.class); 
 					intent.putExtra("id", (Integer) id);  
 					intent.putExtra("nome", (String) name.getText());
-					intent.putExtra("letra", letra);					
+					intent.putExtra("letra", letra);
+					intent.putExtra("songPath", songPath);					
 					intent.putExtra("idArtista", idArtista);  
-					intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			    	startActivity(intent);
 				}
 			});
@@ -96,7 +98,6 @@ public class LyricsListActivity extends Activity {
 	
 	public void inserir(View view) {
 		Intent intent = new Intent(this, LyricsRegistryActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 		startActivity(intent); 
 	} 
 
