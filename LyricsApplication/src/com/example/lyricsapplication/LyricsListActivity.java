@@ -63,7 +63,7 @@ public class LyricsListActivity extends Activity {
 			editar.setOnClickListener(new OnClickListener() {
 				@Override 
 				public void onClick(View v) {
-					Intent intent = new Intent(LyricsListActivity.this, EditLyricsActivity.class); 
+					Intent intent = new Intent(LyricsListActivity.this, LyricsRegistryActivity.class); 
 					intent.putExtra("id", (Integer) id);  
 					intent.putExtra("nome", (String) name.getText());
 					intent.putExtra("letra", letra);

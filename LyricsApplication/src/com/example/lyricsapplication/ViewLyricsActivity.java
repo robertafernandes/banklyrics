@@ -22,6 +22,8 @@ public class ViewLyricsActivity extends Activity implements OnClickListener {
 	private TextView edLyrics;
 	private String songPath;
 	
+	private boolean somInciado = false; 
+	
 	private MediaPlayer mediaPlayer = new MediaPlayer();
 
 	@Override
@@ -36,7 +38,6 @@ public class ViewLyricsActivity extends Activity implements OnClickListener {
 		bHome = (Button) findViewById(R.id.bHome);
 		bHome.setOnClickListener(this);
 
-		// Total value
 		edName = (TextView) findViewById(R.id.textView1);
 		edLyrics = (TextView) findViewById(R.id.textView2);
  
@@ -61,37 +62,40 @@ public class ViewLyricsActivity extends Activity implements OnClickListener {
 		if (v == bPlay) {
 			this.playSong();
 		} else if (v == bPause) {
-			this.stopSong();
+			this.pauseSong();
 		} else {
 			this.voltar();
 		}
 		
 	}
 	
-    private void playSong() {
-        try {
-            mediaPlayer.reset();
-            mediaPlayer.setDataSource(songPath);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-
-            // Changing Button Image to pause image
-            //playButton.setImageResource(R.drawable.ic_pause);
-
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    private void playSong() {        
+    	if (somInciado) {
+    		if (!mediaPlayer.isPlaying()) {
+    			mediaPlayer.start();
+    		}
+    	} else {
+    		try {
+	            mediaPlayer.reset();
+	            mediaPlayer.setDataSource(songPath);
+	            mediaPlayer.prepare();
+	            mediaPlayer.start();
+	            somInciado = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    	}
     }
     
+    private void pauseSong() {
+		if (mediaPlayer.isPlaying()) {
+			mediaPlayer.pause();
+		}
+    }
+
     private void stopSong() {
 		if (mediaPlayer.isPlaying()) {
 			mediaPlayer.stop();
 		}
     }
-
 }

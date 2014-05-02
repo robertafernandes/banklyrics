@@ -4,11 +4,16 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,56 +32,104 @@ public class LyricsRegistryActivity extends Activity implements OnClickListener 
 	private EditText edName;
 	private EditText edLyrics;
 	private Spinner spinnerArtist;
-	private ArtistaItemSpinnerAdapter artistaItemSpinnerAdapter;
-	private String arquivoAudio; 
+	private ArtistaItemSpinnerAdapter artistaItemSpinnerAdapter;	
+	private LinearLayout linLayoutUploadSong;
+			
+	private int id;
+	private String songPath;
+	
+	private int RESULT_LOAD_AUDIO = 13;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_lyrics_registry);   
+		setContentView(R.layout.activity_lyrics_registry);
 
 		databaseMusica = MusicaDataBase.getInstance(this);
 		databaseArtista = ArtistaDataBase.getInstance(this);
+		
+		id = getIntent().getIntExtra("id", 0); 
+		String nome = getIntent().getStringExtra("nome");
+		String letra = getIntent().getStringExtra("letra");
+		songPath = getIntent().getStringExtra("songPath");
+		int idArtista = getIntent().getIntExtra("idArtista",0);		
+		Artista artista = new Artista("", ""); 
+		if (idArtista != 0) {
+			artista = databaseArtista.getUnique(idArtista);
+		}
+
+		edName = (EditText) findViewById(R.id.edName);
+		edLyrics = (EditText) findViewById(R.id.edLyrics);
+
+		edName.setText(nome);
+		edLyrics.setText(letra);
 
 		bSave = (Button) findViewById(R.id.bSave);
 		bSave.setOnClickListener(this);
 
 		bCancel = (Button) findViewById(R.id.bCancel);
-		bCancel.setOnClickListener(this);
-
-		edName = (EditText) findViewById(R.id.edName); 
-		edLyrics = (EditText) findViewById(R.id.edLyrics); 
+		bCancel.setOnClickListener(this); 
 		
 		spinnerArtist = (Spinner)findViewById(R.id.spinArtist);
 		List<Artista> artistas = databaseArtista.getList();
 		artistaItemSpinnerAdapter = new ArtistaItemSpinnerAdapter(artistas, this);
         spinnerArtist.setAdapter(artistaItemSpinnerAdapter);
+        int position = artistaItemSpinnerAdapter.getPosition(artista);        
+        spinnerArtist.setSelection(position);
+        
+        linLayoutUploadSong = (LinearLayout) findViewById(R.id.linLayoutUploadSong);
+        linLayoutUploadSong.setOnClickListener(this);
+
 	}
 
-	@Override
 	public void onClick(View v) {
-		if (v == bSave){
-			if ("".equals(edName.getText().toString()) || "".equals(edLyrics.getText().toString())) {
-				Toast.makeText(this, "Você precisa especificar um nome e valor!", Toast.LENGTH_SHORT).show(); 
-				
-			} else {
-				String name = edName.getText().toString().trim();
-				String letra = edLyrics.getText().toString().trim(); 
-				int position = spinnerArtist.getSelectedItemPosition();
-				Artista artista = (Artista) artistaItemSpinnerAdapter.getItem(position);
-				databaseMusica.insert(new Musica(name, letra, arquivoAudio, artista));  
-				Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show(); 
-				startNewIntent(); 
+		Log.d("elfinha", "dentro do onclick");
+		if (v == linLayoutUploadSong) {
+			Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);			
+			startActivityForResult(i, RESULT_LOAD_AUDIO);
+		} else if (v == bSave) {
+			String name = edName.getText().toString().trim();
+			String letra = edLyrics.getText().toString().trim();			
+			if ("".equals(name) || "".equals(letra)) {
+				Toast.makeText(this, "Você precisa especificar um nome e letra!", Toast.LENGTH_SHORT).show(); 
+				return;
 			}
+			int position = spinnerArtist.getSelectedItemPosition();
+			Artista artista = (Artista) artistaItemSpinnerAdapter.getItem(position);			
+			Musica musica = new Musica(id, name, letra, songPath, artista);
+			if (id == 0) {
+				databaseMusica.insert(musica);  
+				Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+			} else {
+				databaseMusica.update(musica);			
+				Toast.makeText(this, "Alterado com sucesso!", Toast.LENGTH_SHORT).show();
+			}			
+			startNewListIntent();
 		} else {
-			startNewIntent();
-		} 
+			startNewListIntent();	
+		}
 	}
 	
-	private void startNewIntent() {
-		Intent intent = new Intent(this, LyricsListActivity.class); 
+	private void startNewListIntent() {
+		this.finish();		
+    	Log.d("list", "Listando Letras");
+		Intent intent = new Intent(this, LyricsListActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-    	startActivity(intent);
+		startActivity(intent);		
 	}
-
+	
+	@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_AUDIO && resultCode == RESULT_OK && null != data) {
+            Uri selectedSong = data.getData();
+            Log.d("song",selectedSong.toString());
+            String[] filePathColumn = { MediaStore.Audio.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedSong,filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            songPath = cursor.getString(columnIndex);
+            cursor.close();
+            Log.d("song",songPath);
+        }
+    }	
 }
