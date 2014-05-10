@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ViewLyricsActivity extends Activity implements OnClickListener {
 
@@ -69,7 +70,17 @@ public class ViewLyricsActivity extends Activity implements OnClickListener {
 		
 	}
 	
-    private void playSong() {        
+	@Override
+	public void onBackPressed() {
+		this.voltar();
+		super.onBackPressed();
+	}
+	
+    private void playSong() {     
+    	if (songPath == null || songPath.isEmpty()) {
+    		Toast.makeText(this, "Edite esta música realizando Upload de Mp3!", Toast.LENGTH_SHORT).show();
+    		return;
+    	}
     	if (somInciado) {
     		if (!mediaPlayer.isPlaying()) {
     			mediaPlayer.start();
